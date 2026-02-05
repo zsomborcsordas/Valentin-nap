@@ -1,0 +1,179 @@
+import tempfile
+
+import webbrowser
+
+
+
+html = """
+
+<!DOCTYPE html>
+
+<html lang="hu">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>💖 Valentin?</title>
+
+<style>
+
+    body {
+
+        height: 100vh;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+
+        font-family: 'Segoe UI', sans-serif;
+
+        margin: 0;
+
+    }
+
+    .card {
+
+        background: white;
+
+        padding: 40px 50px;
+
+        border-radius: 20px;
+
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+
+        text-align: center;
+
+    }
+
+    h1 {
+
+        color: #e63946;
+
+        margin-bottom: 30px;
+
+    }
+
+    button {
+
+        font-size: 18px;
+
+        padding: 12px 25px;
+
+        margin: 10px;
+
+        border: none;
+
+        border-radius: 30px;
+
+        cursor: pointer;
+
+        transition: transform 0.3s;
+
+    }
+
+    #yes {
+
+        background: #e63946;
+
+        color: white;
+
+        transform: scale(1);
+
+    }
+
+    #no {
+
+        background: #ccc;
+
+        color: #333;
+
+    }
+
+</style>
+
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>Will you be my Valentine? 💖</h1>
+
+
+
+        <button id="yes" onclick="alert('Tudtam 😌💘')">
+
+            Persze pukimano 💕
+
+        </button>
+
+
+
+        <br>
+
+
+
+        <button id="no" onclick="makeYesBigger()">
+
+            Seggömb 🙃
+
+        </button>
+
+    </div>
+
+
+
+<script>
+
+    let scale = 1;
+
+
+
+    function makeYesBigger() {
+
+        scale += 0.2;
+
+        document.getElementById("yes").style.transform =
+
+            "scale(" + scale + ")";
+
+    }
+
+</script>
+
+</body>
+
+</html>
+
+"""
+
+
+
+# ideiglenes HTML fájl létrehozása
+
+with tempfile.NamedTemporaryFile(
+
+    delete=False,
+
+    suffix=".html",
+
+    mode="w",
+
+    encoding="utf-8"
+
+) as f:
+
+    f.write(html)
+
+    filename = f.name
+
+
+
+# megnyitás böngészőben
+
+webbrowser.open("file://" + filename)
